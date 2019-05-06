@@ -1,0 +1,18 @@
+version: "3"
+
+services: 
+  mqtt_server:
+    container_name: mqtt_server
+    hostname: mqtt_server
+    image: eclipse-mosquitto:1.5.4 # To be replaced with Eclipse image
+    ports:
+      - 1883:1883
+      - 1884:9001
+    volumes: 
+      - mqtt_data:/mosquitto/data
+      - mqtt_log:/mosquitto/log
+      - ./configuration/mqtt_server/config:/mosquitto/config
+
+volumes: 
+  mqtt_data:
+  mqtt_log:
